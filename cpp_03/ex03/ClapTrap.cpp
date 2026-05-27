@@ -6,14 +6,14 @@
 /*   By: vloureir <vloureir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 17:10:44 by vloureir          #+#    #+#             */
-/*   Updated: 2026/03/11 18:23:48 by vloureir         ###   ########.fr       */
+/*   Updated: 2026/03/12 12:50:53 by vloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // ClapTrap Actions
-void	ClapTrap::attack(const string& target)
+void	ClapTrap::attack(const std::string& target)
 {
 	if (getHitPoints() <= 0)
 		std::cout << "Not enough hitPoints to act." << std::endl;
@@ -50,12 +50,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 }
 
 // Setter and Getter
-void	ClapTrap::setName(string name)
+void	ClapTrap::setName(std::string name)
 {
 	this->name = name;
 }
 
-string ClapTrap::getName(void) const
+std::string ClapTrap::getName(void) const
 {
 	return (name);
 }
@@ -94,28 +94,20 @@ int		ClapTrap::getEnergyPoints(void) const
 	return (m_energyPoints);
 }
 
-// Orthodox Cannonical Form
-ClapTrap::ClapTrap()  : m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
+// Orthodox Canonical Form
+ClapTrap::ClapTrap() : name("Clap_Default"), m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
 {
-	this->name = "ClapDefault";
-	std::cout << "ClapTrap constructor called" << std::endl;
-	// this->m_hitPoints = 10;
-	// this->m_energyPoints = 10;
-	// this->m_attackDamage = 0;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(string name) : m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
+ClapTrap::ClapTrap(std::string name) : name(name), m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
 {
-	std::cout << "Clap in Clap: " << ClapTrap::m_hitPoints << std::endl;
-	this->name = name;
-	std::cout << "ClapTrap constructor called" << std::endl;
-	// this->m_hitPoints = 10;
-	// this->m_energyPoints = 10;
-	// this->m_attackDamage = 0;
+	std::cout << "ClapTrap " << name << " constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 	this->name = other.name;
 	this->m_hitPoints = other.m_hitPoints;
 	this->m_energyPoints = other.m_energyPoints;
@@ -124,6 +116,7 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
+	std::cout << "ClapTrap assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->name = other.name;

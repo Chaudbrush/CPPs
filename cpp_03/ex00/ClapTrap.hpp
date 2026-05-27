@@ -6,13 +6,13 @@
 /*   By: vloureir <vloureir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 16:48:35 by vloureir          #+#    #+#             */
-/*   Updated: 2026/03/12 11:35:19 by vloureir         ###   ########.fr       */
+/*   Updated: 2026/03/16 14:39:10 by vloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef __CLAPTRAP_HPP__
-# define __CLAPTRAP_HPP__
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 # include <iostream>
 # include <string>
@@ -36,14 +36,14 @@ public:
 	ClapTrap();
 	ClapTrap(std::string name);
 	ClapTrap(const ClapTrap &other);
-	ClapTrap &operator=(const ClapTrap &other);
 	~ClapTrap();
-
+	
+	ClapTrap &operator=(const ClapTrap &other);
 protected:
+	std::string name;		
 	int	m_hitPoints;
 	int	m_energyPoints;
 	int	m_attackDamage;
-	std::string name;
 };
 
 #endif

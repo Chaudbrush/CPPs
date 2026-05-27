@@ -6,14 +6,13 @@
 /*   By: vloureir <vloureir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 13:39:43 by vloureir          #+#    #+#             */
-/*   Updated: 2026/03/09 15:59:16 by vloureir         ###   ########.fr       */
+/*   Updated: 2026/03/12 14:48:23 by vloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-
-void	FragTrap::attack(const string& target)
+void	FragTrap::attack(const std::string& target)
 {
 	if (getHitPoints() <= 0)
 		std::cout << "Not enough hitPoints to act." << std::endl;
@@ -54,37 +53,43 @@ void	FragTrap::highFivesGuys(void)
 	std::cout << "FragTrap " << getName() << " sends a High Five!" << std::endl;
 }
 
+// Orthodox Canonical Form
 FragTrap::FragTrap() : ClapTrap()
 {
-	setName("FragDefault");
-	std::cout << "FragTrap constructor called" << std::endl;
-	setHitPoints(90);
-	setEnergyPoints(90);
-	setAttackDamage(30);
+	std::cout << "FragTrap default constructor called" << std::endl;
+	this->name  = "Frag_Default";
+	this->m_hitPoints = 100;
+	this->m_energyPoints = 100;
+	this->m_attackDamage = 30;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "FragTrap constructor called" << std::endl;
-	setHitPoints(90);
-	setEnergyPoints(90);
-	setAttackDamage(30);
+	std::cout << "FragTrap " << name << " constructor called" << std::endl;
+	this->name = name;
+	this->m_hitPoints = 100;
+	this->m_energyPoints = 100;
+	this->m_attackDamage = 30;
 }
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
-	setHitPoints(other.getHitPoints());
-	setEnergyPoints(other.getEnergyPoints());
-	setAttackDamage(other.getAttackDamage());
+	std::cout << "FragTrap copy constructor called" << std::endl;
+	this->name = other.name;
+	this->m_hitPoints = other.m_hitPoints;
+	this->m_energyPoints = other.m_energyPoints;
+	this->m_attackDamage = other.m_attackDamage;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &other)
 {
+	std::cout << "FragTrap assignment operator called" << std::endl;
 	if (this != &other)
 	{
-		this->setHitPoints(other.getHitPoints());
-		setEnergyPoints(other.getEnergyPoints());
-		setAttackDamage(other.getAttackDamage());
+		this->name = other.name;
+		this->m_hitPoints = other.m_hitPoints;
+		this->m_energyPoints = other.m_energyPoints;
+		this->m_attackDamage = other.m_attackDamage;
 	}
 	return (*this);
 }

@@ -6,13 +6,13 @@
 /*   By: vloureir <vloureir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 21:30:36 by vloureir          #+#    #+#             */
-/*   Updated: 2026/03/12 11:52:22 by vloureir         ###   ########.fr       */
+/*   Updated: 2026/03/12 14:48:16 by vloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-void	ScavTrap::attack(const string& target)
+void	ScavTrap::attack(const std::string& target)
 {
 	if (getHitPoints() <= 0)
 		std::cout << "Not enough hitPoints to act." << std::endl;
@@ -53,11 +53,12 @@ void	ScavTrap::guardGate(void)
 	std::cout << "ScavTrap " << getName() << " initiated Gate keeper mode." << std::endl;
 }
 
+
+// Orthodox Canonical Form
 ScavTrap::ScavTrap() : ClapTrap()
 {
-	std::cout << "ScavTrap constructor called" << std::endl;
-	
-	this->name = "ScavDefault";
+	std::cout << "ScavTrap default constructor called" << std::endl;
+	this->name  = "Scav_Default";
 	this->m_hitPoints = 100;
 	this->m_energyPoints = 50;
 	this->m_attackDamage = 20;
@@ -65,8 +66,8 @@ ScavTrap::ScavTrap() : ClapTrap()
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "ScavTrap constructor called" << std::endl;
-
+	std::cout << "ScavTrap " << name << " constructor called" << std::endl;
+	this->name = name;
 	this->m_hitPoints = 100;
 	this->m_energyPoints = 50;
 	this->m_attackDamage = 20;
@@ -74,6 +75,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
+	std::cout << "ScavTrap copy constructor called" << std::endl;
 	this->name = other.name;
 	this->m_hitPoints = other.m_hitPoints;
 	this->m_energyPoints = other.m_energyPoints;
@@ -82,6 +84,7 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
+	std::cout << "ScavTrap assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->name = other.name;

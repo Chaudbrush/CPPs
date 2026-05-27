@@ -6,13 +6,13 @@
 /*   By: vloureir <vloureir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 21:30:34 by vloureir          #+#    #+#             */
-/*   Updated: 2026/03/11 18:38:04 by vloureir         ###   ########.fr       */
+/*   Updated: 2026/03/16 14:40:58 by vloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef __SCAVTRAP_HPP__
-# define __SCAVTRAP_HPP__
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 # include <iostream>
 # include <string>
@@ -21,7 +21,7 @@
 class ScavTrap : public ClapTrap
 {
 public:
-	void	attack(const string& target);
+	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 	void	guardGate(void);
@@ -29,8 +29,9 @@ public:
 	ScavTrap();
 	ScavTrap(std::string name);
 	ScavTrap(const ScavTrap &other);
-	ScavTrap &operator=(const ScavTrap &other);
 	~ScavTrap();
+	
+	ScavTrap &operator=(const ScavTrap &other);
 };
 
 #endif

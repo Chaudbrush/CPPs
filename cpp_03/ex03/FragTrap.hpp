@@ -6,14 +6,13 @@
 /*   By: vloureir <vloureir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 13:39:10 by vloureir          #+#    #+#             */
-/*   Updated: 2026/03/09 18:17:55 by vloureir         ###   ########.fr       */
+/*   Updated: 2026/03/16 14:39:56 by vloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef __FRAGTRAP_HPP__
-# define __FRAGTRAP_HPP__
-
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 # include <iostream>
 # include <string>
@@ -22,7 +21,7 @@
 class FragTrap : virtual public ClapTrap
 {
 public:
-	void	attack(const string& target);
+	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 	void	highFivesGuys(void);
@@ -30,8 +29,9 @@ public:
 	FragTrap();
 	FragTrap(std::string name);
 	FragTrap(const FragTrap &other);
-	FragTrap &operator=(const FragTrap &other);
 	~FragTrap();
+
+	FragTrap &operator=(const FragTrap &other);
 };
 
 #endif

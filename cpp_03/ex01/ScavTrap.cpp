@@ -6,13 +6,13 @@
 /*   By: vloureir <vloureir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 21:30:36 by vloureir          #+#    #+#             */
-/*   Updated: 2026/03/11 18:37:09 by vloureir         ###   ########.fr       */
+/*   Updated: 2026/03/12 14:48:32 by vloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-void	ScavTrap::attack(const string& target)
+void	ScavTrap::attack(const std::string& target)
 {
 	if (getHitPoints() <= 0)
 		std::cout << "Not enough hitPoints to act." << std::endl;
@@ -50,50 +50,47 @@ void	ScavTrap::beRepaired(unsigned int amount)
 
 void	ScavTrap::guardGate(void)
 {
-	std::cout << "ScavTrap " << getName() << " initiate Gate keeper mode." << std::endl;
+	std::cout << "ScavTrap " << getName() << " initiated Gate keeper mode." << std::endl;
 }
 
+
+// Orthodox Canonical Form
 ScavTrap::ScavTrap() : ClapTrap()
 {
-	setName("ScavDefault");
-	std::cout << "ScavTrap constructor called" << std::endl;
-	this->m_hitPoints = ClapTrap::m_hitPoints + 90;
-	this->m_energyPoints = ClapTrap::m_energyPoints + 40;
-	this->m_attackDamage = ClapTrap::m_attackDamage + 20;
-	
-	// setHitPoints(90);
-	// setEnergyPoints(40);
-	// setAttackDamage(20);
+	std::cout << "ScavTrap default constructor called" << std::endl;
+	this->name  = "Scav_Default";
+	this->m_hitPoints = 100;
+	this->m_energyPoints = 50;
+	this->m_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "ScavTrap constructor called" << std::endl;
-	
-	this->m_hitPoints = ClapTrap::m_hitPoints + 90;
-	this->m_energyPoints = ClapTrap::m_energyPoints + 40;
-	this->m_attackDamage = ClapTrap::m_attackDamage + 20;
-	
-	// setHitPoints(90);
-	// setEnergyPoints(40);
-	// setAttackDamage(20);
+	std::cout << "ScavTrap " << name << " constructor called" << std::endl;
+	this->name = name;
+	this->m_hitPoints = 100;
+	this->m_energyPoints = 50;
+	this->m_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
-
-	// setHitPoints(other.getHitPoints());
-	// setEnergyPoints(other.getEnergyPoints());
-	// setAttackDamage(other.getAttackDamage());
+	std::cout << "ScavTrap copy constructor called" << std::endl;
+	this->name = other.name;
+	this->m_hitPoints = other.m_hitPoints;
+	this->m_energyPoints = other.m_energyPoints;
+	this->m_attackDamage = other.m_attackDamage;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
+	std::cout << "ScavTrap assignment operator called" << std::endl;
 	if (this != &other)
 	{
-		this->setHitPoints(other.getHitPoints());
-		setEnergyPoints(other.getEnergyPoints());
-		setAttackDamage(other.getAttackDamage());
+		this->name = other.name;
+		this->m_hitPoints = other.m_hitPoints;
+		this->m_energyPoints = other.m_energyPoints;
+		this->m_attackDamage = other.m_attackDamage;
 	}
 	return (*this);
 }

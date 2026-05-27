@@ -6,7 +6,7 @@
 /*   By: vloureir <vloureir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 17:10:44 by vloureir          #+#    #+#             */
-/*   Updated: 2026/03/12 11:44:26 by vloureir         ###   ########.fr       */
+/*   Updated: 2026/03/12 12:50:53 by vloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,23 +94,15 @@ int		ClapTrap::getEnergyPoints(void) const
 	return (m_energyPoints);
 }
 
-// Orthodox Cannonical Form
-ClapTrap::ClapTrap()
+// Orthodox Canonical Form
+ClapTrap::ClapTrap() : name("Clap_Default"), m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
 {
-	this->name = "Clap_Default";
-	std::cout << "ClapTrap Clap_Default constructor called" << std::endl;
-	m_hitPoints = 10;
-	m_energyPoints = 10;
-	m_attackDamage = 0;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string name) : name(name), m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
 {
-	this->name = name;
 	std::cout << "ClapTrap " << name << " constructor called" << std::endl;
-	m_hitPoints = 10;
-	m_energyPoints = 10;
-	m_attackDamage = 0;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)

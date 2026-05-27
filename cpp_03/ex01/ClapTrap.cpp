@@ -6,14 +6,14 @@
 /*   By: vloureir <vloureir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/07 17:10:44 by vloureir          #+#    #+#             */
-/*   Updated: 2026/03/11 18:32:34 by vloureir         ###   ########.fr       */
+/*   Updated: 2026/03/12 12:27:40 by vloureir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // ClapTrap Actions
-void	ClapTrap::attack(const string& target)
+void	ClapTrap::attack(const std::string& target)
 {
 	if (getHitPoints() <= 0)
 		std::cout << "Not enough hitPoints to act." << std::endl;
@@ -50,12 +50,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 }
 
 // Setter and Getter
-void	ClapTrap::setName(string name)
+void	ClapTrap::setName(std::string name)
 {
 	this->name = name;
 }
 
-string ClapTrap::getName(void) const
+std::string ClapTrap::getName(void) const
 {
 	return (name);
 }
@@ -95,26 +95,20 @@ int		ClapTrap::getEnergyPoints(void) const
 }
 
 // Orthodox Cannonical Form
-ClapTrap::ClapTrap()  : m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
+ClapTrap::ClapTrap() : name("Clap_Default"), m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
 {
-	this->name = "ClapDefault";
-	std::cout << "ClapTrap constructor called" << std::endl;
-	// m_hitPoints = 10;
-	// m_energyPoints = 10;
-	// m_attackDamage = 0;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(string name)  : m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
+ClapTrap::ClapTrap(std::string name) : name(name), m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)
 {
-	this->name = name;
-	std::cout << "ClapTrap constructor called" << std::endl;
-	// m_hitPoints = 10;
-	// m_energyPoints = 10;
-	// m_attackDamage = 0;
+	std::cout << "ClapTrap " << name << " constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
+	std::cout << "ClapTrap copy constructor called" << std::endl;
+	this->name = other.name;
 	this->m_hitPoints = other.m_hitPoints;
 	this->m_energyPoints = other.m_energyPoints;
 	this->m_attackDamage = other.m_attackDamage;
@@ -122,11 +116,13 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
+	std::cout << "ClapTrap assignment operator called" << std::endl;
 	if (this != &other)
 	{
-		m_hitPoints = other.m_hitPoints;
-		m_energyPoints = other.m_energyPoints;
-		m_attackDamage = other.m_attackDamage;
+		this->name = other.name;
+		this->m_hitPoints = other.m_hitPoints;
+		this->m_energyPoints = other.m_energyPoints;
+		this->m_attackDamage = other.m_attackDamage;
 	}
 	return (*this);
 }
